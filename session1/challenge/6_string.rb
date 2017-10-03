@@ -8,4 +8,31 @@
 # odds_and_evens("abcdefg",false)   # => "aceg"
 
 def odds_and_evens(string, return_odds)
+  array = string.split('')
+  i = 0
+
+  if return_odds
+    array.each do |n|
+      if i % 2 == 0
+      	array[i] = "$$"
+      end
+      i += 1
+    end
+  array.delete("$$")
+  string = String.new
+  array.each {|n| string += n}
+  return string
+  end
+
+  array.each do |n|
+    unless i % 2 == 0
+      array[i] = "$$"
+    end
+    i += 1
+  end
+  array.delete("$$")
+  string = String.new
+  array.each {|n| string += n}
+  return string
+
 end
