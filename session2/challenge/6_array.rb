@@ -14,3 +14,15 @@
 # prime_chars? ['ab', 'cd']       # => false
 # prime_chars? ['a', 'bcd']       # => false
 # prime_chars? ['a', 'b', 'cd']   # => false
+
+def prime_chars?(array)
+  sum = 0
+  return true if array == []
+  array.each { |n| sum += n.length }
+  sum.times do |n|
+  	if n >= 2 && sum % n == 0
+  		return false
+  	end
+  end
+  true
+end
