@@ -5,3 +5,8 @@
 # got_three? ['a', 'a', 'b']  # => false
 # got_three? ['a', 'a', 'a']  # => true
 # got_three? [1, 2, 1, 1]     # => false
+
+def got_three?(array)
+  (array.length - 2).times { |n| return true if array[n] == array[n + 1] && array[n] == array[n + 2] }
+  false
+end
