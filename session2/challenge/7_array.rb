@@ -8,3 +8,19 @@
 # alternate_words("Lorem ipsum dolor sit amet.")  # => ["Lorem", "dolor", "amet"]
 # alternate_words("Can't we all get along?")      # => ["Can't", "all", "along"]
 # alternate_words("Elementary, my dear Watson!")  # => ["Elementary", "dear"]
+
+def alternate_words(string)
+  array = string.split('')
+  black_list = %w{! @ $ # % ^ & * ( ) - = _ + [ ] : ; , . / < > ? \ |} 
+  array.length.times do |n|
+    if black_list.include?(array[n])
+      array[n] = " "
+    end
+  end
+  string = String.new
+  array.each { |n| string += n}
+  array = string.split(' ')
+  answer = []
+  array.length.times { |n| answer.push(array[n]) if n % 2 == 0 }
+  return answer
+end
