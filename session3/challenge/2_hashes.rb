@@ -8,3 +8,19 @@
 # staircase 4  # => {1 => [], 3 => [2]}
 # staircase 5  # => {1 => [], 3 => [2], 5 =>[2, 4]}
 
+def staircase(n)
+  jall = Hash.new { |this_hash, key| this_hash[key] = 0 }
+  array = []
+  for i in 1..n
+  	unless i % 2 == 0
+  	  jall[i] 
+  	  k = i
+  	  for h in 1..k
+  	    array.push(h) if h % 2 == 0
+  	  end
+  	  jall[i] = array
+  	  array = []	
+    end
+  end
+  return jall	
+end
