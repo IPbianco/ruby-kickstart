@@ -16,3 +16,27 @@
 #   order << i
 # end
 # order # => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+
+def spiral_access(array, &block)
+  copia = []
+  nueva = []
+  while array.length != 1
+    copia.push(array.shift)
+    i = 0
+    j = array[0].length-1
+    k = array.length
+    while j >= 0
+      while i < k
+        nueva.push(array[i][j])
+        i += 1
+      end
+      i = 0
+      j -= 1
+    end
+    nueva = nueva.each_slice(k).to_a
+    array = nueva
+    nueva = []
+  end
+  respuesta = (copia + array).flatten
+  respuesta.each { |n| block.call n }
+end
