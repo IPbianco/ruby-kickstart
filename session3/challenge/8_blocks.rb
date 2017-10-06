@@ -24,13 +24,16 @@
 # artist.name   # => "The Artist Formarly Known As Prince"
 # artist.age    # => 47
 
-
 class Person
-  attr_accessor :name
+  attr_accessor :name, :age, :quote, :options
 
-  def initialize(&initializer)
+  def initialize(options = Hash.new, &initializer)
+    @options = options
+    self.name = options[:name] if options[:name]
+    self.age = options[:age] if options[:age]
+    self.quote = options[:quote] if options[:quote]
     @initializer = initializer
-    initializer.call self
+    initializer.call self if initializer
   end
 
   def reinit
