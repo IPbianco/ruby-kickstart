@@ -28,6 +28,26 @@
 #
 # create it from scratch :)
 
-
-def pathify
+def pathify(jash, str = "")
+  i = 0
+  answer = []
+  path = []
+  array = []
+  array = jash.keys
+  array.each do |n|
+    if jash[n].is_a? Hash
+      str_copy = str
+      str += "/#{n}" 
+      path += pathify(jash[n], str)
+      str = str_copy
+    elsif jash[n].is_a? Array
+      str_copy = str
+      str += "/#{n}"
+      jash[n].each do |k|
+      path.push(str + "/#{k}")
+      end
+      str = str_copy
+    end
+  end
+  path
 end
