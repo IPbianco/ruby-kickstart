@@ -17,3 +17,41 @@
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
 
+def match_maker(*array)
+  diana = array.first
+  answer = []
+  array.length.times do |n|
+    if array[n]
+      array[n] = true
+    else
+      array[n] = false
+    end
+  end
+  array.shift
+  if diana
+    (array.length/2).times do
+      if (array[0] && array[1]) || (array[0] == false && array[1] == false)
+        answer.push(false)
+        array.shift
+        array.shift
+      else
+        answer.push(true)
+        array.shift
+        array.shift
+      end
+    end
+  else
+    (array.length/2).times do
+      if (array[0] && array[1]) || (array[0] == false && array[1] == false) 
+        answer.push(true)
+        array.shift
+        array.shift
+      else
+        answer.push(false)
+        array.shift
+        array.shift
+      end
+    end
+  end
+  return answer
+end
