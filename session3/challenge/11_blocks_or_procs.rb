@@ -29,6 +29,7 @@
 #   end
 # end
 
-
-def array_init
+def array_init(n=5, &block)
+  block = Proc.new { |i| (100 * i).to_s } unless block	
+  Array.new(n, &block)
 end
