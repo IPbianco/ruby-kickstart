@@ -29,4 +29,16 @@
 # shared [1,2,3], [3,2,1]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, true]}, [1, 2, 3]]
 
 def shared(a, b)
+  jash = Hash.new {|this_hash, key| this_hash[key] = []}
+  answer = []
+  a.each { |n| jash[n] = [true, nil] }
+  b.each do |n|
+    if jash[n] == []
+ 	  jash[n] = [nil, true]
+ 	else
+ 	  jash[n] = [true, true]
+ 	  answer.push(n)
+ 	end
+  end
+  return [jash, answer.sort]
 end
